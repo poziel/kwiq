@@ -190,7 +190,7 @@ User Journey:
   - `@tailwindcss/vite` - Vite integration
 - **Custom Theme:**
   ```css
-  --color-primary-500: #fe795d; /* Coral/Orange */ 
+  --color-primary-500: #fe795d; /* Coral/Orange */
   --color-primary-600: #ef562f;
   --color-secondary-500: #0ea5e9; /* Sky Blue */
   ```
