@@ -1,0 +1,79 @@
+name: CD - Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  # Wait for CI to pass before deploying
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    needs: []
+    # Only run if CI passes (add after first CI run)
+    # needs: [ci]
+
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,prefix={{branch}}-
+            type=ref,event=branch
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy-to-remote:
+    runs-on: ubuntu-latest
+    needs: build-and-push-image
+
+    steps:
+      - name: Deploy to remote server via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH || '~/kwiq' }}
+            docker compose pull
+            docker compose up -d --remove-orphans
+            docker image prune -f
+
+      # Note: This deployment assumes:
+      # - The remote host has Docker and Docker Compose installed
+      # - A docker-compose.yml file is pre-configured at DEPLOY_PATH
+      # - The compose file references the image: ghcr.io/<owner>/kwiq:latest
+      # - The remote host is authenticated to pull from GitHub Container Registry
+      #
+      # Required GitHub Secrets:
+      # - DEPLOY_HOST: The deployment server hostname or IP
+      # - DEPLOY_USER: SSH username for deployment
+      # - DEPLOY_SSH_KEY: Private SSH key for authentication
+      # - DEPLOY_PATH (optional): Directory containing docker-compose.yml (defaults to ~/kwiq)

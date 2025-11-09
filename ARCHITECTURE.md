@@ -190,8 +190,9 @@ User Journey:
   - `@tailwindcss/vite` - Vite integration
 - **Custom Theme:**
   ```css
-  --color-primary-500: #fe795d /* Coral/Orange */ --color-primary-600: #ef562f
-  	--color-secondary-500: #0ea5e9 /* Sky Blue */;
+  --color-primary-500: #fe795d; /* Coral/Orange */ 
+  --color-primary-600: #ef562f;
+  --color-secondary-500: #0ea5e9; /* Sky Blue */
   ```
 - **Benefits:**
   - Rapid UI development
@@ -425,6 +426,98 @@ Automated build, test, and deployment pipeline triggered on code changes.
 
 - Push to `main` branch → Full pipeline (deploy to production)
 - Pull requests → Build and test only (no deployment)
+
+### Reverse Proxy Configuration
+
+KWIQ is designed to run behind a reverse proxy for SSL/TLS termination, domain routing, and security.
+
+**Overview:**
+
+The reverse proxy layer sits between the internet and the KWIQ Docker container, handling HTTPS encryption, domain routing, and WebSocket upgrade headers required for Socket.IO.
+
+**Generic Setup Pattern:**
+
+```
+Internet → Reverse Proxy (Port 443/80) → KWIQ Container (Port 3000)
+```
+
+**Required Proxy Configuration:**
+
+1. **Domain/Subdomain:** Point your domain to the deployment server
+2. **SSL/TLS:** Enable HTTPS with valid SSL certificate (e.g., Let's Encrypt)
+3. **Port Forwarding:** Forward traffic to KWIQ container port (default: 3000)
+4. **WebSocket Support:** Enable WebSocket upgrade headers for Socket.IO
+
+**Example Proxy Configuration (Generic):**
+
+```nginx
+# Upstream to KWIQ container
+upstream kwiq_backend {
+    server localhost:3000;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name your-domain.com;
+
+    # SSL certificate configuration
+    ssl_certificate /path/to/cert.pem;
+    ssl_certificate_key /path/to/key.pem;
+
+    # WebSocket upgrade headers (required for Socket.IO)
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+
+    location / {
+        proxy_pass http://kwiq_backend;
+    }
+}
+```
+
+**Using Nginx Proxy Manager (NPM):**
+
+If using Nginx Proxy Manager or similar web-based proxy management tools:
+
+1. **Create Proxy Host:**
+   - Domain: `your-domain.com`
+   - Scheme: `http`
+   - Forward Hostname/IP: `localhost` or deployment host IP
+   - Forward Port: `3000` (KWIQ container port)
+
+2. **Enable SSL:**
+   - Request/force SSL certificate
+   - Enable "Force SSL" option
+   - HTTP/2 Support: Enabled
+
+3. **Custom Nginx Configuration (Advanced tab):**
+   ```nginx
+   # WebSocket support for Socket.IO
+   proxy_http_version 1.1;
+   proxy_set_header Upgrade $http_upgrade;
+   proxy_set_header Connection "upgrade";
+   ```
+
+**Important Notes:**
+
+- This configuration is **deployment-specific** and not automated by this repository
+- The reverse proxy must be configured on the deployment host or infrastructure
+- Ensure WebSocket upgrade headers are enabled for real-time features to work
+- SSL/TLS certificates should be managed by the proxy layer, not the KWIQ container
+
+**Alternative Reverse Proxies:**
+
+- Nginx Proxy Manager (web UI)
+- Traefik (Docker labels)
+- Caddy (automatic HTTPS)
+- Cloudflare Tunnel (zero-trust)
+- HAProxy
+
+All reverse proxies must support WebSocket connections for Socket.IO to function correctly.
 
 ### Deployment Architecture
 

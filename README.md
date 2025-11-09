@@ -153,11 +153,3 @@ kwiq/
 ## 💬 License
 
 This project is licensed under the **MIT License** — see [LICENSE](./LICENSE) for details.
-
----
-
-## 🧑‍💻 Author
-
-**Poziel**  
-Creator of KWIQ — made for friends, fun, and fast quizzes.  
-🌐 [https://poziel.com](https://poziel.com)
