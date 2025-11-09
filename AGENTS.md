@@ -302,7 +302,20 @@ src/
 #### `.env.example`
 
 - **Purpose:** Environment variable template and configuration reference
-- **Contains:** Port settings, environment mode, future database/Redis URLs
+- **Contains:**
+  - Port settings and environment mode
+  - **Public branding variables** (self-hosting friendly):
+    - `PUBLIC_KWIQ_APP_NAME`: App name displayed throughout the UI
+    - `PUBLIC_KWIQ_LOGO_URL`: Path to logo image (optional)
+    - `PUBLIC_KWIQ_LOGO_ALT`: Logo alt text
+    - `PUBLIC_KWIQ_PRIMARY_COLOR`: Primary theme color
+    - `PUBLIC_KWIQ_GRADIENT_FROM`: Background gradient start color
+    - `PUBLIC_KWIQ_GRADIENT_TO`: Background gradient end color
+  - Future database/Redis URLs (not yet implemented)
+- **Self-Hosting:**
+  - Self-hosters can override branding by editing `.env` or passing env vars via Docker Compose
+  - Public variables (prefixed with `PUBLIC_`) are exposed to the client via SvelteKit's env system
+  - Changes to public vars require a rebuild to take effect
 - **AI Agent Rules:**
   - Use this as the source of truth for configuration options
   - Never commit actual `.env` files (already in `.gitignore`)
