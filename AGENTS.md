@@ -10,6 +10,7 @@
 **Development Stage:** Early MVP (Milestone 1 in progress)
 
 **Key Features:**
+
 - Real-time synchronization between host, players, and display screen
 - Room-based multiplayer with unique join codes
 - Support for static (predefined) and dynamic (adaptive) quizzes
@@ -24,42 +25,42 @@
 
 ### Frontend Stack
 
-| Technology | Version | Purpose | Documentation |
-|-----------|---------|---------|---------------|
-| **SvelteKit** | 2.47.1 | Full-stack framework with SSR & routing | https://kit.svelte.dev/docs |
-| **Svelte** | 5.41.0 | Reactive UI component library | https://svelte.dev/docs |
-| **TypeScript** | 5.9.3 | Type-safe JavaScript | https://www.typescriptlang.org/docs/ |
-| **TailwindCSS** | 4.1.14 | Utility-first CSS framework | https://tailwindcss.com/docs |
-| **Flowbite Svelte** | 1.24.1 | Pre-built Tailwind components | https://flowbite-svelte.com/ |
-| **Flowbite Icons** | 3.0.0 | SVG icon library | https://flowbite.com/icons/ |
+| Technology          | Version | Purpose                                 | Documentation                        |
+| ------------------- | ------- | --------------------------------------- | ------------------------------------ |
+| **SvelteKit**       | 2.47.1  | Full-stack framework with SSR & routing | https://kit.svelte.dev/docs          |
+| **Svelte**          | 5.41.0  | Reactive UI component library           | https://svelte.dev/docs              |
+| **TypeScript**      | 5.9.3   | Type-safe JavaScript                    | https://www.typescriptlang.org/docs/ |
+| **TailwindCSS**     | 4.1.14  | Utility-first CSS framework             | https://tailwindcss.com/docs         |
+| **Flowbite Svelte** | 1.24.1  | Pre-built Tailwind components           | https://flowbite-svelte.com/         |
+| **Flowbite Icons**  | 3.0.0   | SVG icon library                        | https://flowbite.com/icons/          |
 
 ### Build & Tooling
 
-| Technology | Version | Purpose |
-|-----------|---------|---------|
-| **Vite** | 7.1.10 | Build tool & dev server |
-| **ESLint** | 9.38.0 | Code linting & quality |
-| **Prettier** | 3.6.2 | Code formatting |
-| **TypeScript ESLint** | 8.28.0 | TypeScript linting rules |
-| **Svelte Check** | 4.3.3 | Svelte type checking |
+| Technology            | Version | Purpose                  |
+| --------------------- | ------- | ------------------------ |
+| **Vite**              | 7.1.10  | Build tool & dev server  |
+| **ESLint**            | 9.38.0  | Code linting & quality   |
+| **Prettier**          | 3.6.2   | Code formatting          |
+| **TypeScript ESLint** | 8.28.0  | TypeScript linting rules |
+| **Svelte Check**      | 4.3.3   | Svelte type checking     |
 
 ### Runtime & Deployment
 
-| Technology | Purpose |
-|-----------|---------|
-| **Node.js** | Server runtime (18+) |
-| **Docker** | Containerization |
+| Technology         | Purpose                       |
+| ------------------ | ----------------------------- |
+| **Node.js**        | Server runtime (18+)          |
+| **Docker**         | Containerization              |
 | **Docker Compose** | Multi-container orchestration |
-| **GitHub Actions** | CI/CD pipeline |
+| **GitHub Actions** | CI/CD pipeline                |
 
 ### Planned Technologies
 
-| Technology | Purpose | Status |
-|-----------|---------|--------|
-| **WebSockets** | Real-time synchronization | Milestone 2 |
-| **PostgreSQL / MongoDB** | Data persistence | Future |
-| **Redis** | Session & cache storage | Future |
-| **Socket.IO** | Alternative WebSocket library | Consideration |
+| Technology               | Purpose                       | Status        |
+| ------------------------ | ----------------------------- | ------------- |
+| **WebSockets**           | Real-time synchronization     | Milestone 2   |
+| **PostgreSQL / MongoDB** | Data persistence              | Future        |
+| **Redis**                | Session & cache storage       | Future        |
+| **Socket.IO**            | Alternative WebSocket library | Consideration |
 
 ---
 
@@ -75,25 +76,29 @@ cd kwiq
 # 2. Install dependencies
 npm install
 
-# 3. Start development server
+# 3. Configure environment (optional)
+# Copy .env.example to .env and customize if needed
+cp .env.example .env
+
+# 4. Start development server
 npm run dev
 # Server runs on http://localhost:5173
 
-# 4. Open in browser
+# 5. Open in browser
 # Navigate to http://localhost:5173
 ```
 
 ### Development Commands
 
-| Command | Purpose | Description |
-|---------|---------|-------------|
-| `npm run dev` | **Start dev server** | Runs Vite dev server with HMR on port 5173 |
-| `npm run build` | **Build production** | Creates optimized build in `build/` directory |
-| `npm run preview` | **Preview build** | Preview production build locally |
-| `npm run check` | **Type check** | Run TypeScript + Svelte type checking |
-| `npm run check:watch` | **Watch mode check** | Type checking in watch mode |
-| `npm run lint` | **Lint code** | Run Prettier + ESLint validation |
-| `npm run format` | **Format code** | Auto-format all files with Prettier |
+| Command               | Purpose              | Description                                   |
+| --------------------- | -------------------- | --------------------------------------------- |
+| `npm run dev`         | **Start dev server** | Runs Vite dev server with HMR on port 5173    |
+| `npm run build`       | **Build production** | Creates optimized build in `build/` directory |
+| `npm run preview`     | **Preview build**    | Preview production build locally              |
+| `npm run check`       | **Type check**       | Run TypeScript + Svelte type checking         |
+| `npm run check:watch` | **Watch mode check** | Type checking in watch mode                   |
+| `npm run lint`        | **Lint code**        | Run Prettier + ESLint validation              |
+| `npm run format`      | **Format code**      | Auto-format all files with Prettier           |
 
 ### Docker Workflow
 
@@ -162,7 +167,10 @@ kwiq/
 ├── tsconfig.json           # TypeScript configuration
 ├── eslint.config.js        # ESLint rules
 ├── .prettierrc             # Prettier formatting rules
+├── .env.example            # Environment variable template
 ├── .gitignore              # Git ignore patterns
+├── Dockerfile              # Docker build instructions
+├── docker-compose.yml      # Container orchestration
 ├── README.md               # Project documentation
 ├── ARCHITECTURE.md         # Architecture overview
 └── AGENTS.md               # This file (AI agent guidelines)
@@ -246,6 +254,7 @@ src/
 ### Configuration Files
 
 #### `package.json`
+
 - **Purpose:** Project metadata, dependencies, npm scripts
 - **AI Agent Rules:**
   - Only modify dependencies when explicitly required
@@ -253,18 +262,21 @@ src/
   - Always run `npm install` after modifying dependencies
 
 #### `svelte.config.js`
+
 - **Purpose:** SvelteKit framework configuration
 - **AI Agent Rules:**
   - Do not modify adapter unless deployment target changes
   - Preprocessor settings are stable, avoid changes
 
 #### `vite.config.ts`
+
 - **Purpose:** Build tool configuration (Vite)
 - **AI Agent Rules:**
   - Only add plugins when necessary
   - Do not modify port/host without user request
 
 #### `tsconfig.json`
+
 - **Purpose:** TypeScript compiler configuration
 - **AI Agent Rules:**
   - Strict mode is enabled - maintain type safety
@@ -272,18 +284,30 @@ src/
   - Use `$lib` alias for library imports
 
 #### `eslint.config.js`
+
 - **Purpose:** Code linting rules
 - **AI Agent Rules:**
   - Flat config format (ESLint 9+) - do not convert to legacy format
   - Maintain consistency with Prettier rules
 
 #### `.prettierrc`
+
 - **Purpose:** Code formatting rules
 - **AI Agent Rules:**
   - Tabs (not spaces) for indentation
   - Single quotes for strings
   - 100 character line width
   - Do not modify unless explicitly requested
+
+#### `.env.example`
+
+- **Purpose:** Environment variable template and configuration reference
+- **Contains:** Port settings, environment mode, future database/Redis URLs
+- **AI Agent Rules:**
+  - Use this as the source of truth for configuration options
+  - Never commit actual `.env` files (already in `.gitignore`)
+  - Update `.env.example` when adding new environment variables
+  - Do not include secrets, production URLs, or infrastructure-specific details
 
 ---
 
@@ -341,34 +365,34 @@ When creating a new Svelte component:
 
 ```svelte
 <script lang="ts">
-  // 1. Import types from $lib/types/
-  import type { Question } from '$lib/types/quiz';
+	// 1. Import types from $lib/types/
+	import type { Question } from '$lib/types/quiz';
 
-  // 2. Define props with types
-  interface Props {
-    question: Question;
-    onAnswer: (answerId: number) => void;
-  }
+	// 2. Define props with types
+	interface Props {
+		question: Question;
+		onAnswer: (answerId: number) => void;
+	}
 
-  let { question, onAnswer }: Props = $props();
+	let { question, onAnswer }: Props = $props();
 
-  // 3. Use Svelte 5 runes for reactivity
-  let selectedAnswer = $state<number | null>(null);
+	// 3. Use Svelte 5 runes for reactivity
+	let selectedAnswer = $state<number | null>(null);
 
-  // 4. Derived state
-  let hasAnswered = $derived(selectedAnswer !== null);
+	// 4. Derived state
+	let hasAnswered = $derived(selectedAnswer !== null);
 
-  // 5. Event handlers
-  function handleAnswer(id: number) {
-    selectedAnswer = id;
-    onAnswer(id);
-  }
+	// 5. Event handlers
+	function handleAnswer(id: number) {
+		selectedAnswer = id;
+		onAnswer(id);
+	}
 </script>
 
 <!-- 6. Use Tailwind + Flowbite components -->
-<div class="p-4 bg-white dark:bg-slate-800 rounded-lg">
-  <h2 class="text-xl font-bold mb-4">{question.text}</h2>
-  <!-- Component content -->
+<div class="rounded-lg bg-white p-4 dark:bg-slate-800">
+	<h2 class="mb-4 text-xl font-bold">{question.text}</h2>
+	<!-- Component content -->
 </div>
 ```
 
@@ -380,28 +404,28 @@ When creating new types:
 // src/lib/types/quiz.ts
 
 export interface Quiz {
-  id: string;
-  title: string;
-  description?: string;
-  questions: Question[];
-  createdAt: Date;
+	id: string;
+	title: string;
+	description?: string;
+	questions: Question[];
+	createdAt: Date;
 }
 
 export interface Question {
-  id: number;
-  type: QuestionType;
-  text: string;
-  mediaUrl?: string;
-  timeLimit: number;
-  points: number;
-  answers: Answer[];
+	id: number;
+	type: QuestionType;
+	text: string;
+	mediaUrl?: string;
+	timeLimit: number;
+	points: number;
+	answers: Answer[];
 }
 
 export interface Answer {
-  id: number;
-  text: string;
-  isCorrect: boolean;
-  order: number;
+	id: number;
+	text: string;
+	isCorrect: boolean;
+	order: number;
 }
 
 export type QuestionType = 'multiple-choice' | 'true-false' | 'text-input';
@@ -417,28 +441,28 @@ When creating services:
 import type { Room, RoomState } from '$lib/types/room';
 
 export class RoomManager {
-  private rooms: Map<string, RoomState> = new Map();
+	private rooms: Map<string, RoomState> = new Map();
 
-  createRoom(hostId: string): Room {
-    const roomCode = this.generateRoomCode();
-    const room: RoomState = {
-      roomCode,
-      roomId: crypto.randomUUID(),
-      hostId,
-      players: [],
-      currentQuestion: null,
-      questionStartTime: null,
-      scores: {},
-      status: 'waiting'
-    };
+	createRoom(hostId: string): Room {
+		const roomCode = this.generateRoomCode();
+		const room: RoomState = {
+			roomCode,
+			roomId: crypto.randomUUID(),
+			hostId,
+			players: [],
+			currentQuestion: null,
+			questionStartTime: null,
+			scores: {},
+			status: 'waiting'
+		};
 
-    this.rooms.set(roomCode, room);
-    return room;
-  }
+		this.rooms.set(roomCode, room);
+		return room;
+	}
 
-  private generateRoomCode(): string {
-    // Implementation
-  }
+	private generateRoomCode(): string {
+		// Implementation
+	}
 }
 ```
 
@@ -453,23 +477,23 @@ import { writable, derived } from 'svelte/store';
 import type { Quiz, Question } from '$lib/types/quiz';
 
 interface QuizState {
-  currentQuiz: Quiz | null;
-  currentQuestionIndex: number;
-  isActive: boolean;
+	currentQuiz: Quiz | null;
+	currentQuestionIndex: number;
+	isActive: boolean;
 }
 
 const initialState: QuizState = {
-  currentQuiz: null,
-  currentQuestionIndex: 0,
-  isActive: false
+	currentQuiz: null,
+	currentQuestionIndex: 0,
+	isActive: false
 };
 
 export const quizStore = writable<QuizState>(initialState);
 
 // Derived store
 export const currentQuestion = derived(
-  quizStore,
-  ($quiz) => $quiz.currentQuiz?.questions[$quiz.currentQuestionIndex] ?? null
+	quizStore,
+	($quiz) => $quiz.currentQuiz?.questions[$quiz.currentQuestionIndex] ?? null
 );
 ```
 
@@ -530,6 +554,7 @@ Before implementing features, agents should:
 ### Constraints & Limitations
 
 **Do NOT:**
+
 - Modify configuration files without explicit user request
 - Add new dependencies without user approval
 - Change TypeScript strict mode settings
@@ -540,6 +565,7 @@ Before implementing features, agents should:
 - Use double quotes for strings (use single quotes)
 
 **DO:**
+
 - Use `$lib` alias for imports
 - Follow Tailwind utility-first approach
 - Leverage Flowbite components
@@ -629,6 +655,7 @@ git push origin feature/your-feature
 Agents should prioritize tasks based on the current milestone in `README.md`:
 
 ### Milestone 1: Project Setup & Core Architecture (Current)
+
 - [x] Initialize SvelteKit project
 - [x] Configure TailwindCSS + Flowbite
 - [x] Set up TypeScript strict mode
@@ -637,6 +664,7 @@ Agents should prioritize tasks based on the current milestone in `README.md`:
 - [ ] Define core TypeScript types
 
 ### Milestone 2: Room System & Device Synchronization
+
 - [ ] Implement WebSocket server
 - [ ] Create room creation/join logic
 - [ ] Build host room management interface
@@ -689,14 +717,14 @@ When implementing WebSocket features (Milestone 2), use this event schema:
 
 ### Naming Conventions
 
-| Type | Convention | Example |
-|------|-----------|---------|
-| **Files** | kebab-case | `quiz-builder.svelte` |
-| **Components** | PascalCase | `QuizBuilder.svelte` |
-| **Variables** | camelCase | `playerScore` |
-| **Constants** | UPPER_SNAKE_CASE | `MAX_PLAYERS` |
-| **Types/Interfaces** | PascalCase | `QuizState` |
-| **Functions** | camelCase | `calculateScore()` |
+| Type                 | Convention       | Example               |
+| -------------------- | ---------------- | --------------------- |
+| **Files**            | kebab-case       | `quiz-builder.svelte` |
+| **Components**       | PascalCase       | `QuizBuilder.svelte`  |
+| **Variables**        | camelCase        | `playerScore`         |
+| **Constants**        | UPPER_SNAKE_CASE | `MAX_PLAYERS`         |
+| **Types/Interfaces** | PascalCase       | `QuizState`           |
+| **Functions**        | camelCase        | `calculateScore()`    |
 
 ### File Organization
 
@@ -711,7 +739,7 @@ import { quizStore } from '$lib/stores/quiz';
 
 // 3. Type definitions
 interface Props {
-  quizId: string;
+	quizId: string;
 }
 
 // 4. Component logic
@@ -720,7 +748,7 @@ let quiz = $state<Quiz | null>(null);
 
 // 5. Functions
 function loadQuiz() {
-  // Implementation
+	// Implementation
 }
 ```
 
@@ -728,8 +756,8 @@ function loadQuiz() {
 
 ```svelte
 <!-- Layout → Spacing → Sizing → Colors → Typography → Effects -->
-<div class="flex flex-col gap-4 w-full p-4 bg-primary-500 text-white rounded-lg shadow-md">
-  <!-- Content -->
+<div class="flex w-full flex-col gap-4 rounded-lg bg-primary-500 p-4 text-white shadow-md">
+	<!-- Content -->
 </div>
 ```
 
@@ -740,6 +768,7 @@ function loadQuiz() {
 ### Common Issues
 
 **TypeScript Errors:**
+
 ```bash
 # Run type check to see all errors
 npm run check
@@ -749,6 +778,7 @@ npm run check
 ```
 
 **Linting Errors:**
+
 ```bash
 # Auto-fix most issues
 npm run format
@@ -758,6 +788,7 @@ npm run lint
 ```
 
 **Build Errors:**
+
 ```bash
 # Clear cache and rebuild
 rm -rf .svelte-kit build
@@ -765,6 +796,7 @@ npm run build
 ```
 
 **Dev Server Issues:**
+
 ```bash
 # Kill process on port 5173 (if stuck)
 # Windows: netstat -ano | findstr :5173
@@ -801,6 +833,7 @@ See "WebSocket Event Reference" section above.
 ## Resource Links
 
 ### Official Documentation
+
 - **SvelteKit:** https://kit.svelte.dev/docs
 - **Svelte 5:** https://svelte.dev/docs/svelte/overview
 - **TypeScript:** https://www.typescriptlang.org/docs/
@@ -808,11 +841,13 @@ See "WebSocket Event Reference" section above.
 - **Flowbite Svelte:** https://flowbite-svelte.com/
 
 ### Community Resources
+
 - **SvelteKit Discord:** https://discord.gg/svelte
 - **Svelte Reddit:** https://www.reddit.com/r/sveltejs/
 - **Stack Overflow:** Tag `svelte` or `sveltekit`
 
 ### Tools
+
 - **Svelte DevTools:** Browser extension for debugging
 - **Prettier Plugin:** VS Code extension
 - **ESLint Plugin:** VS Code extension
@@ -830,6 +865,7 @@ AI agents working on KWIQ should prioritize:
 5. **Milestone Alignment:** Follow planned task order
 
 **Questions or Issues?**
+
 - Review README.md for project overview
 - Check ARCHITECTURE.md for design decisions
 - Run `npm run check` and `npm run lint` before asking for help
