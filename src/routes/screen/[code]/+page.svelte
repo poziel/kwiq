@@ -6,16 +6,13 @@
 	const roomCode = $page.params.code || '';
 </script>
 
-<div
-	class="relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-950 dark:to-slate-900"
->
-	<!-- Theme Toggle -->
-	<div class="absolute top-4 right-4">
-		<ThemeToggle />
-	</div>
+<!-- Theme Toggle -->
+<div class="absolute top-4 right-4 z-20">
+	<ThemeToggle />
+</div>
 
-	<!-- Main Content -->
-	<section class="flex min-h-screen flex-col items-center justify-center p-8">
+<!-- Main Content -->
+<section class="flex min-h-screen flex-col items-center justify-center p-8">
 		<div class="w-full max-w-6xl">
 			<div class="mb-8 flex items-center justify-between">
 				<h1 class="text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -35,5 +32,4 @@
 				</p>
 			</div>
 		</div>
-	</section>
-</div>
+</section>
