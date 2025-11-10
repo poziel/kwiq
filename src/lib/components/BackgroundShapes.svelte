@@ -30,10 +30,10 @@
 				animation-delay: {shape.delay}s;
 				animation-duration: {shape.duration}s;
 				{shape.type === 'triangle'
-					? `border-left: ${shape.size / 2}px solid transparent;
+				? `border-left: ${shape.size / 2}px solid transparent;
 					   border-right: ${shape.size / 2}px solid transparent;
 					   border-bottom: ${shape.size}px solid currentColor;`
-					: ''}
+				: ''}
 			"
 		></div>
 	{/each}

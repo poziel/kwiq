@@ -2,7 +2,9 @@
 	// No props needed - purely decorative
 </script>
 
-<div class="wave-container pointer-events-none fixed left-0 right-0 bottom-0 w-full overflow-hidden">
+<div
+	class="wave-container pointer-events-none fixed right-0 bottom-0 left-0 w-full overflow-hidden"
+>
 	<!-- Multiple wave layers for depth -->
 	<svg
 		class="wave wave-1"

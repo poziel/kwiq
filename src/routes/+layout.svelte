@@ -17,7 +17,9 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="app-container relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-950 dark:to-slate-900">
+<div
+	class="app-container relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-950 dark:to-slate-900"
+>
 	<!-- Background effects that persist across pages -->
 	<BackgroundShapes />
 	<BackgroundWave />
