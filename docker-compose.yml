@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  kwiq:
+    build: .
+    container_name: kwiq
+    ports:
+      - '${KWIQ_PORT:-3000}:3000'
+    env_file:
+      - .env
+    restart: unless-stopped

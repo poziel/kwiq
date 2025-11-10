@@ -39,8 +39,11 @@
 		"vite": "^7.1.10"
 	},
 	"dependencies": {
+		"@sveltejs/adapter-node": "^5.4.0",
 		"flowbite": "^3.1.2",
 		"flowbite-svelte": "^1.24.1",
-		"flowbite-svelte-icons": "^3.0.0"
+		"flowbite-svelte-icons": "^3.0.0",
+		"socket.io": "^4.8.1",
+		"socket.io-client": "^4.8.1"
 	}
 }

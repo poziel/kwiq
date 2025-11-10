@@ -21,18 +21,18 @@ Whether you're hosting a trivia night with friends or running an educational cha
 2. **Players** join by scanning a QR code or entering a room code on their phones/computers.
 3. The quiz progresses question by question, with real-time updates shown to all players.
 4. Questions can be:
-   - **Static**: predefined question/answer pairs (e.g. *“What is the capital of India?”* → *“New Delhi”*)
-   - **Dynamic**: logic-driven (e.g. *“Who mains this champion?”* → randomly pulls from a player data list)
+   - **Static**: predefined question/answer pairs (e.g. _“What is the capital of India?”_ → _“New Delhi”_)
+   - **Dynamic**: logic-driven (e.g. _“Who mains this champion?”_ → randomly pulls from a player data list)
 5. Scores are tracked, winners are displayed, and everyone celebrates (or argues over that one question 😄).
 
 ---
 
 ## 👥 Who It's For
 
-- Party hosts and social groups  
-- Classroom educators and trainers  
-- Gaming communities (e.g. custom League of Legends quizzes)  
-- Streamers or community event organizers  
+- Party hosts and social groups
+- Classroom educators and trainers
+- Gaming communities (e.g. custom League of Legends quizzes)
+- Streamers or community event organizers
 
 If you've ever wished **Kahoot** and **Jackbox** had a baby — that's KWIQ.
 
@@ -42,14 +42,14 @@ If you've ever wished **Kahoot** and **Jackbox** had a baby — that's KWIQ.
 
 KWIQ is a full-stack **SvelteKit** application running in a secure containerized environment.
 
-| Layer | Technology | Purpose |
-|-------|-------------|---------|
-| **Frontend & Backend** | [SvelteKit](https://kit.svelte.dev/) | Unified app logic, routing, and SSR |
-| **Language** | [TypeScript](https://www.typescriptlang.org/) | Type-safe development |
-| **Styling** | [Tailwind CSS](https://tailwindcss.com/) + [Flowbite Svelte](https://flowbite-svelte.com/) | Modern, responsive UI |
-| **Realtime** | WebSockets (via Node or Socket.IO) | Player/host synchronization |
-| **Containerization** | [Docker](https://www.docker.com/) | Consistent deployment |
-| **CI/CD** | GitHub Actions | Build → push → deploy |
+| Layer                  | Technology                                                                                 | Purpose                             |
+| ---------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------- |
+| **Frontend & Backend** | [SvelteKit](https://kit.svelte.dev/)                                                       | Unified app logic, routing, and SSR |
+| **Language**           | [TypeScript](https://www.typescriptlang.org/)                                              | Type-safe development               |
+| **Styling**            | [Tailwind CSS](https://tailwindcss.com/) + [Flowbite Svelte](https://flowbite-svelte.com/) | Modern, responsive UI               |
+| **Realtime**           | WebSockets (via Node or Socket.IO)                                                         | Player/host synchronization         |
+| **Containerization**   | [Docker](https://www.docker.com/)                                                          | Consistent deployment               |
+| **CI/CD**              | GitHub Actions                                                                             | Build → push → deploy               |
 
 ---
 
@@ -62,7 +62,7 @@ KWIQ is a full-stack **SvelteKit** application running in a secure containerized
 - **Runtime:** Node.js 18+
 - **Containerization:** Docker & Docker Compose
 - **Version Control:** Git + GitHub
-- **CI/CD:** GitHub Actions for automated deployments  
+- **CI/CD:** GitHub Actions for automated deployments
 
 ---
 
@@ -112,18 +112,18 @@ The application will be available on port 3000. Configure your deployment enviro
 
 ## 🧩 Project Milestones
 
-| # | Milestone | Status |
-|---|------------|--------|
-| 1 | Project Setup & Core Architecture | 🔄 In Progress |
-| 2 | Room System & Device Synchronization | ⏳ Planned |
-| 3 | Hosting & Casting Interface | ⏳ Planned |
-| 4 | Static Quiz Engine | ⏳ Planned |
-| 5 | Dynamic Quiz Logic | ⏳ Planned |
-| 6 | Quiz Builder Interface | ⏳ Planned |
-| 7 | Player Experience | ⏳ Planned |
-| 8 | Scoring & Rounds | ⏳ Planned |
-| 9 | Theming & Polish | ⏳ Planned |
-| 10 | Deployment & Beta | ⏳ Planned |
+| #   | Milestone                            | Status         |
+| --- | ------------------------------------ | -------------- |
+| 1   | Project Setup & Core Architecture    | 🔄 In Progress |
+| 2   | Room System & Device Synchronization | ⏳ Planned     |
+| 3   | Hosting & Casting Interface          | ⏳ Planned     |
+| 4   | Static Quiz Engine                   | ⏳ Planned     |
+| 5   | Dynamic Quiz Logic                   | ⏳ Planned     |
+| 6   | Quiz Builder Interface               | ⏳ Planned     |
+| 7   | Player Experience                    | ⏳ Planned     |
+| 8   | Scoring & Rounds                     | ⏳ Planned     |
+| 9   | Theming & Polish                     | ⏳ Planned     |
+| 10  | Deployment & Beta                    | ⏳ Planned     |
 
 ---
 
@@ -153,11 +153,3 @@ kwiq/
 ## 💬 License
 
 This project is licensed under the **MIT License** — see [LICENSE](./LICENSE) for details.
-
----
-
-## 🧑‍💻 Author
-
-**Poziel**  
-Creator of KWIQ — made for friends, fun, and fast quizzes.  
-🌐 [https://poziel.com](https://poziel.com)
