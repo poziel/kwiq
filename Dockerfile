@@ -9,6 +9,10 @@ RUN npm ci
 
 # Build application
 COPY . .
+
+# Create .env from .env.example for build-time type generation
+RUN cp .env.example .env
+
 RUN npm run build
 RUN npm prune --production
 
